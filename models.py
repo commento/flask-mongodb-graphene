@@ -40,3 +40,11 @@ class Level(Document):
     boss = StringField()
     enemies = ListField(ReferenceField(Enemy))
     powerups = ListField(ReferenceField(Powerup))
+
+
+class Person(Document):
+    meta = {"collection": "person"}
+    first_name = StringField()
+    last_name = StringField()
+    age = IntField()
+

@@ -11,7 +11,7 @@ PASSWORD = os.environ.get("MONGODB_PASSWORD")
 
 client = connect(
     DATABASE,
-    host=f"mongodb+srv://mongograph:{PASSWORD}@clusterjj-gazky.mongodb.net/?ssl=true&ssl_cert_reqs=CERT_NONE",
+    host=f"mongodb://localhost:27017",
     alias="default",
 )
 client.drop_database(DATABASE)

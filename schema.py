@@ -7,6 +7,7 @@ from models import Game as GameModel
 from models import Powerup as PowerupModel
 from models import Enemy as EnemyModel
 from models import Level as LevelModel
+from models import Person as PersonModel
 
 
 class Game(MongoengineObjectType):
@@ -37,12 +38,21 @@ class Level(MongoengineObjectType):
         interfaces = (Node,)
 
 
+class Person(MongoengineObjectType):
+    class Meta:
+        description = "Person"
+        model = PersonModel
+        interfaces = (Node,)
+
+
 class Query(graphene.ObjectType):
     node = Node.Field()
 
     all_levels = MongoengineConnectionField(Level)
     all_enemies = MongoengineConnectionField(Enemy)
     all_powerups = MongoengineConnectionField(Powerup)
+    all_games = MongoengineConnectionField(Game)
+    all_persons = MongoengineConnectionField(Person)
 
 
-schema = graphene.Schema(query=Query, types=[Powerup, Level, Enemy, Game])
+schema = graphene.Schema(query=Query, types=[Powerup, Level, Enemy, Game, Person])
